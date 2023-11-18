@@ -1,0 +1,273 @@
+.frame {
+    height: 100px;
+}
+
+
+.frame1 {
+
+    margin-left: 20%;
+    margin-top: 5%;
+    margin-bottom: 5%;
+    background-color: #e9ecef;
+    border-radius: 15px;
+    width: 60%;
+
+
+}
+
+.f1s {
+    box-shadow: 6px 6px 16px gray;
+    border-radius: 15px;
+}
+
+
+
+.body1 .f1l {
+
+    flex: none;
+    width: 60%;
+    height: 100%;
+
+    /* background-color: aqua; */
+
+}
+
+.body1 .f1r {
+
+    flex: auto;
+    justify-content: flex-end;
+    /* background-color: antiquewhite; */
+    margin-right: 5%;
+
+
+}
+
+
+
+body {
+
+    margin: 0px;
+    height: 100%;
+    border: rgba(255, 255, 255, 0) 1px solid;
+    opacity: 0.9;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    background-size: cover;
+    background-image: linear-gradient(to bottom, #e9ecef, rgba(255, 255, 255, 0)), url(pexels-pixabay-159211.jpg)
+}
+
+.body1 {
+
+    height: 700px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 50px;
+    color: gray;
+    text-decoration: none;
+    text-shadow: 4px 4px rgba(255, 255, 255, 0.75);
+
+}
+
+
+input {
+    border-radius: 5px;
+    font-size: 40px;
+}
+
+button {
+    display: inline;
+    font-size: 30px;
+}
+
+
+footer {
+    list-style: none;
+
+}
+
+
+
+
+.wrap2 {
+    overflow: hidden;
+    border-radius: 10px 10px 10px 10px;
+    box-shadow: -6px -6px 16px white;
+}
+
+table {
+    font-family: 'Oswald', sans-serif;
+    border-collapse: separate;
+    width: 100%;
+    border-spacing: 0;
+    border: 8px solid rgb(212, 212, 212);
+    font-size: 40px;
+}
+
+th {
+    background-color: #6b675d;
+    color: #ffffff;
+    width: 300px;
+    height: 100px;
+}
+
+
+
+td {
+    color: gray;
+    text-shadow: 4px 4px 3px rgb(202, 202, 202);
+    background-color: #f3f3f3;
+    height: 100px;
+    width: 300px;
+    text-align: center;
+    border-top: 2px solid rgb(197, 197, 197);
+    border-left: 2px solid rgb(197, 197, 197);
+}
+
+
+th {
+    background-color: rgb(212, 212, 212);
+    color: gray;
+    height: 100px;
+    text-shadow: 4px 4px 2px white;
+}
+
+
+
+
+
+
+
+.title {
+
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    color: white;
+    font-size: 35px;
+    text-shadow: 0.1em 0.1em 0.2em black;
+}
+
+
+
+.pic{
+
+    width: 200px;
+    height: 200px;
+ 
+}
+
+
+.wrap{
+    width: 100%;
+    height: 100px;
+    margin: 0 auto;
+/*     transform: scale3d(1,1,1); */
+    font-size: 30px;
+    
+}
+
+.header{
+/*     display: flex; */
+    position: fixed;
+/*     width: 100% ;    */
+    padding: 0 20px;
+    background-color: pink;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-sizing: border-box;
+    opacity: 0.9;
+    
+}
+
+.header h1{
+    width:400px;
+    height: 50px;
+    /* background-image: url("https://i.postimg.cc/Ss5kCQjk/logo.png"); */
+    /* background-repeat: no-repeat; */
+    /* text-indent: 101%; */
+    font-size: 40px;
+    overflow: hidden;
+    white-space: nowrap;
+    color: gray;
+    text-shadow: 3px 3px rgba(255, 255, 255, 0.75);
+
+}
+
+.menu{
+    display: flex;
+    text-decoration: none;
+}
+
+.menu li{
+    margin-right: 5px;
+    list-style-type: none;
+}
+
+.menu li:nth-child(3){
+    margin-right: 0;
+}
+
+.menu li a{
+    padding: 20px 20px;
+    text-decoration: none;
+    display: block;
+    color: gray;
+    border-bottom: 8px solid transparent;
+    text-shadow: 2px 2px rgba(255, 255, 255, 0.75);
+}
+
+.menu li a:hover{
+    color: white;
+    border-bottom: 8px solid white;
+}
+
+@media (max-width: 540px) {
+
+    .title {
+        font-size: 30px;
+    }
+
+    .frame1 {
+        margin-left: 0px;
+        width: 100%;
+
+    }
+
+    .body1 {
+        font-size: 30px;
+        width: 100%;
+        display: inline;
+        margin: 10%;
+    }
+
+
+    button {
+
+        font-size: 25px;
+    }
+
+    table {
+        font-size: 25px;
+        
+    }
+
+    a {
+        font-size: 20px;
+    }
+
+    th,
+    td {
+        height: 60px;
+    }
+
+    .pic{
+
+        width: 100px;
+        height: 100px;
+    }
+
+}

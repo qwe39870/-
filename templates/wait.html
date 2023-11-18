@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>藥物功效查詢</title>
+  <link rel="stylesheet" href="/static/style3.css" type="text/css">
+
+
+</head>
+
+<body>
+
+  <div class="header wrap">
+    <h1>藥物功效查詢</h1>
+    <ul class="menu">
+      <li><a href="/">首頁</a></li>
+      <li><a href="/login">登入</a></li>
+
+    </ul>
+  </div>
+
+
+  <div class="frame">
+
+    <div class="title">
+      <h1 style="margin-top: 10%;"><img src="https://i.imgur.com/MMn2vqZ.png" width="80" height="80" />查詢結果</h1>
+    </div>
+
+  </div>
+
+  <div class="frame1">
+    <div class="f1s">
+
+
+      <div class="wrap2">
+        <table border="1">
+
+
+          <tr>
+
+            <th>藥名</th>
+            <td>{{ medicine.name }}</td>
+            <th>顏色</th>
+            <td>{{ medicine.color }}</td>
+            <td rowspan="2">
+              <div class="pic"><img src="{{ medicine.img }}" width="100%" height="100%" /></div>
+            </td>
+
+
+
+
+          </tr>
+          <tr>
+
+            <th>形狀</th>
+            <td>{{ medicine.shape }}</td>
+            <th>劑形</th>
+            <td>{{ medicine.usee }}</td>
+
+          </tr>
+          <tr>
+
+            <th>作用</th>
+            <td colspan='5'>{{ medicine.effect }}</td>
+
+          </tr>
+          <tr>
+
+            <th>副作用</th>
+            <td colspan='5'>{{ medicine.sideffect }}</td>
+
+          </tr>
+
+        </table>
+      </div>
+
+
+
+
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+
+</html>

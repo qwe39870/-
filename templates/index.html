@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藥物功效查詢</title>
+    <link rel="stylesheet" href="/static/style.css" type="text/css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+
+
+</head>
+
+<body>
+
+    <div class="header wrap">
+        <h1>藥物功效查詢</h1>
+        <ul class="menu">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/login">登入</a></li>
+        </ul>
+    </div>
+
+    <div class="frame">
+
+        <div class="title">
+            <h1 style="margin-top: 10%;"><img src="static/med.png" width="80" height="80"  />藥物查詢</h1>
+        </div>
+
+    </div>
+
+
+
+    <div class="frame1">
+        <div class="f1s">
+            <div class="body1">
+
+
+                <div class="f1l">&nbsp;關鍵字搜尋:</div>
+                <div class="f1r">
+                    <form class="key" action="{% url 'search' %}" method="POST">
+                        {% csrf_token %}
+                        <input type="text" placeholder="&nbsp;&nbsp;請輸入藥物關鍵字或類型" id="keyword" name="keyword" />
+                        <button id="submit">搜尋</button>
+                    </form>
+                </div><br>
+
+
+            </div><br>
+
+
+        </div>
+    </div>
+
+    <div class="frame2">
+        <div class="f2s">
+            <div class="body2">
+
+                <form action="{% url 'find' %}" method="POST">
+                    {% csrf_token %}
+                    <div class="box1">
+                        <div class="f2l">&nbsp;藥品顏色:</div>
+                        <div class="f2r">
+                            <ul>
+                                <li>
+                                    <input type="radio" name="color" id="c1" value="白色">
+                                    <label for="c1" class="hold">
+                                        白色
+                                        <span style="border-color: #f3f3f2;background-color: #f3f3f2;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c2" value="黃色">
+                                    <label for="c2" class="hold">
+                                        黃色
+                                        <span style="border-color: #fff500;background-color: #fff500;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c3" value="紅色">
+                                    <label for="c3" class="hold">
+                                        紅色
+                                        <span style="border-color: red;background-color: red;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c4" value="藍色">
+                                    <label for="c4" class="hold">
+                                        藍色
+                                        <span style="border-color: blue;background-color: blue;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c5" value="綠色">
+                                    <label for="c5" class="hold">
+                                        綠色
+                                        <span style="border-color: green;background-color: green;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c6" value="橘色">
+                                    <label for="c6" class="hold">
+                                        橘色
+                                        <span style="border-color: orange;background-color: orange;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c7" value="粉色">
+                                    <label for="c7" class="hold">
+                                        粉色
+                                        <span style="border-color: pink;background-color: pink;"></span>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="color" id="c8" value="灰色">
+                                    <label for="c8" class="hold">
+                                        灰色
+                                        <span style="border-color: gray;background-color: gray;"></span>
+                                    </label>
+                                </li>
+
+
+                            </ul>
+                        </div>
+                    </div><br>
+                    <div class="box1">
+                        <div class="f2l">&nbsp;藥品形狀:</div>
+                        <div class="f2r">
+                            <ul>
+                                <li>
+                                    <input type="radio" name="shape" id="s1" value="三角形">
+                                    <label for="s1" class="qaq">
+                                        三角形
+                                        <img src="static/trangle.png" width="25" height="25"/>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="shape" id="s2" value="四邊形">
+                                    <label for="s2" class="qaq">
+                                        四邊形
+                                        <img src="static/square.png" width="25" height="25"/>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="shape" id="s3" value="五邊形">
+                                    <label for="s3" class="qaq">
+                                        五邊形
+                                        <img src="static/five.png" width="25" height="25"/>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="shape" id="s4" value="橢圓形">
+                                    <label for="s4" class="qaq">
+                                        橢圓形
+                                        <img src="static/oval.png" width="25" height="25"/>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="shape" id="s5" value="圓形">
+                                    <label for="s5" class="qaq">
+                                        圓形
+                                        <img src="static/circle.png" width="25" height="25"/>
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="shape" id="s6" value="不規則形">
+                                    <label for="s6" class="qaq">
+                                        不規則形
+                                        
+                                    </label>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div><br>
+                    <div class="box1">
+                        <div class="f2l">&nbsp;藥品劑型:</div>
+                        <div class="f2r">
+                            <ul>
+                                <li>
+                                    <input type="radio" name="use" id="u1" value="膠囊">
+                                    <label for="u1" class="clikk">
+                                        膠囊
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="use" id="u2" value="錠劑">
+                                    <label for="u2" class="clikk">
+                                        錠劑
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="use" id="u3" value="口溶">
+                                    <label for="u3" class="clikk">
+                                        口溶
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="use" id="u4" value="膜衣錠">
+                                    <label for="u4" class="clikk">
+                                        膜衣錠
+                                    </label>
+                                </li>
+                                <li>
+                                    <input type="radio" name="use" id="u5" value="多層錠">
+                                    <label for="u5" class="clikk">
+                                        多層錠
+                                    </label>
+                                </li>
+
+                            </ul>
+                        </div>
+                    </div><br>
+
+                    <div class="box1">
+                        <button id="formsub">上傳</button>
+                    </div>
+                </form>
+
+            </div><br>
+        </div>
+    </div>
+
+    <script>
+
+        $(document).ready(function () {
+            $('#submit').click(function () {
+                if ($('#keyword').val() == null || $('#keyword').val() == "") {
+                    alert('關鍵字怎麼可以沒有關鍵字！');
+                }
+            })
+        });
+
+        var arr = document.getElementsByClassName("hold")
+        for (let i = 0; i < arr.length; i++) {
+            arr[i].onclick = function () {
+                arr[i].style.borderColor = "pink";
+                arr[i].style.borderWidth = "3px";
+                arr[i].style.boxShadow = "3px 3px 13px pink";
+                arr[i].style.backgroundColor = "#fde7e9ec";
+                console.log("push the button c");
+                for (let j = 0; j < arr.length; j++) {
+                    if (j != i) {
+                        arr[j].style.borderColor = "gray";
+                        arr[j].style.borderWidth = "thin";
+                        arr[j].style.boxShadow = "none";
+                        arr[j].style.backgroundColor = "#e9ecef";
+
+                    }
+                }
+            }
+        }
+
+    </script>
+
+    <script>
+
+        var ar = document.getElementsByClassName("qaq")
+        for (let i = 0; i < ar.length; i++) {
+            ar[i].onclick = function () {
+                ar[i].style.borderColor = "pink";
+                ar[i].style.borderWidth = "3px";
+                ar[i].style.boxShadow = "3px 3px 13px pink";
+                ar[i].style.backgroundColor = "#fde7e9ec";
+                console.log("push the button s");
+                for (let j = 0; j < ar.length; j++) {
+                    if (j != i) {
+                        ar[j].style.borderColor = "gray";
+                        ar[j].style.borderWidth = "thin";
+                        ar[j].style.boxShadow = "none";
+                        ar[j].style.backgroundColor = "#e9ecef";
+
+                    }
+                }
+            }
+        }
+
+        var mm = document.getElementsByClassName("clikk")
+        for (let i = 0; i < mm.length; i++) {
+            mm[i].onclick = function () {
+                mm[i].style.borderColor = "pink";
+                mm[i].style.borderWidth = "3px";
+                mm[i].style.boxShadow = "3px 3px 13px pink";
+                mm[i].style.backgroundColor = "#fde7e9ec";
+                console.log("push the button u");
+                for (let j = 0; j < mm.length; j++) {
+                    if (j != i) {
+                        mm[j].style.borderColor = "gray";
+                        mm[j].style.borderWidth = "thin";
+                        mm[j].style.boxShadow = "none";
+                        mm[j].style.backgroundColor = "#e9ecef";
+                    }
+                }
+            }
+        }
+
+
+
+    </script>
+
+</body>
+
+
+</html>

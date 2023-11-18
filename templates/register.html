@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>藥物註冊</title>
+    <link rel="stylesheet" href="/static/login.css" type="text/css">
+</head>
+
+<body>
+    <div class="header wrap">
+        <h1>藥物功效查詢</h1>
+        <ul class="menu">
+            <li><a href="/">首頁</a></li>
+            <li><a href="/login">登入</a></li>
+        </ul>
+    </div>
+    <div class="title">
+        <h1 style="margin-top: 10%;"><img src="https://i.imgur.com/MMn2vqZ.png" width="80" height="80"  />會員註冊</h1>
+    </div>
+    <div class="login">
+        <div class="shadow">
+            <form action="{% url 'register' %}" method="POST">
+                {% csrf_token %}
+                {% for field in form %}
+                    <div class="inputaccount">
+                        <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                        {{ field }}
+                    </div>
+        
+                {% endfor %}
+        
+                {% if form.errors %}
+                        <div class="error">
+                            {% for error_group in form.errors.values %}
+                                {% for error in error_group %}
+                                    <p>{{ error }}</p>
+                                {% endfor %}
+                            {% endfor %}
+                        </div>
+                {% endif %}
+        
+                <div class="int"><input type="submit" value="註冊"></div>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

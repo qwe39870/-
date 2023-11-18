@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>藥物功效查詢</title>
+  <link rel="stylesheet" href="/static/style2.css" type="text/css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/simplePagination.js/1.6/jquery.simplePagination.min.js"></script>
+
+
+</head>
+
+<body>
+
+  <div class="header wrap">
+    <h1>藥物功效查詢</h1>
+    <ul class="menu">
+      <li><a href="/">首頁</a></li>
+      <li><a href="/login">登入</a></li>
+    </ul>
+  </div>
+
+
+  <div class="frame">
+
+    <div class="title">
+      <h1 style="margin-top: 10%;"><img src="https://i.imgur.com/MMn2vqZ.png" width="80" height="80" />查詢結果</h1>
+    </div>
+
+  </div>
+
+
+
+  <div class="frame1">
+    <div class="f1s">
+      <!-- <div class="body1"> -->
+
+      <div class="wrap2">
+
+        <table border="1" id="page">
+          <thead style="background:#ffd5d9ec">
+            <tr>
+              <th>名稱</th>
+              <th>顏色</th>
+              <th>形狀</th>
+              <th>劑型</th>
+              <th>詳細</th>
+            </tr>
+          </thead>
+
+
+          <tbody>
+
+
+            <tr>
+              <td colspan="5" rowspan="6"><br>查無符合條件之藥品&nbsp;&nbsp;<a href="{% url 'Index' %}">回首頁</a><br><br></td>
+            </tr>
+
+
+
+          </tbody>
+
+
+          <tfoot>
+
+
+
+
+          </tfoot>
+        </table>
+
+      </div>
+
+      <footer>
+
+
+
+      </footer>
+
+
+
+      <!-- </div><br> -->
+
+
+    </div>
+  </div>
+
+
+
+
+</body>
+
+
+</html>
