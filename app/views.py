@@ -1,81 +1,69 @@
 from django.http import HttpResponse
-from django.shortcuts import render, redirect, reverse
-from django.views.generic import View
-from django.contrib import messages
-import db
+from django.views.decorators.csrf import csrf_exempt
+from django.utils.decorators import method_decorator
+from django.views import View
+from django.conf import settings
 
+from linebot import WebhookHandler, LineBotApi
+from linebot.exceptions import InvalidSignatureError
+from linebot.models import MessageEvent, TextMessage, TextSendMessage, TemplateSendMessage, URITemplateAction, CarouselTemplate, MessageTemplateAction, CarouselColumn
 
-class Index(View):
-    def get(self, request):
-        
-        return render(request, 'index.html')
+from function import function_list,dinner,medicine_list
+
+line_bot_api = LineBotApi('OFYecLIa0Jf/oG3DarhVPnhHG0wOvWl8LVnuAsLiIsA4+uvlKQ1h4dHOWVJiMSUNvdJcQoV6cxfah7id2GGnx+fbIp7bAxyJtSL/YP3t7s1T5uLXMotcEIPwFhAwNfCK2cN8be+Rkt8x2G0xsHtALwdB04t89/1O/w1cDnyilFU=')
+handler = WebhookHandler('d600365b0debbc75ad76959dc1245df7')
+
+@method_decorator(csrf_exempt, name='dispatch')
+class CallbackView(View):
+    def post(self, request, *args, **kwargs):
+        signature = request.META.get('HTTP_X_LINE_SIGNATURE', '')
+        body = request.body.decode('utf-8')
+        try:
+            handler.handle(body, signature)
+        except InvalidSignatureError:
+            return HttpResponse(status=400)
+        return HttpResponse(status=200)
+
+@handler.add(MessageEvent, message=TextMessage)
+def handle_message(event):
+    msg = event.message.text
     
-class Search(View):
-    def post(self, request):
-        keyword = request.POST.get('keyword','')
+    if '測試' in msg:
+        message = function_list()
 
-        sql="select * from medicine"
-        medicines =db.querydata(sql)
+    elif '晚餐' in msg:
+        message = dinner()
 
-        results = []
+    elif '藥' in msg:
+        message = medicine_list
 
-        for medicine in medicines:
-            keyword_match = not keyword or keyword.lower() in medicine['name'].lower()
-            type_match = (keyword == medicine['type'])
-            if keyword_match or type_match:
-                results.append(medicine)
+    else:
+        message = TextSendMessage(text="測試不成功")
 
-        if keyword == '':
-            return redirect(reverse('Index'))
-        
-        if results==[]:
+    line_bot_api.reply_message(event.reply_token,message)
 
-            return redirect(reverse('nothing'))
-        
+    # TemplateSendMessage(
+    #         alt_text='功能列表',
+    #         template=CarouselTemplate(
+    #             columns=[
+    #                 CarouselColumn(
+    #                     thumbnail_image_url='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQkl5qgGtBxZbBu921rynn7HN7C7JaD_Hbi5cMMV5gEgQu2mE-rIw',
+    #                     title='Maso萬事屋百貨',
+    #                     text='百萬種商品一站購足',
+    #                     actions=[
+    #                         MessageTemplateAction(
+    #                             label='關於Maso百貨',
+    #                             text='Maso萬事屋百貨是什麼呢？'
+    #                         ),
+    #                         URITemplateAction(
+    #                             label='點我逛百貨',
+    #                             uri='https://tw.shop.com/maso0310'
+    #                         )
+    #                     ]
+    #                 ),
+    #             ]
+    #         )
+    #     )
 
-        feed= {'results': results}
-        return render(request, 'index2.html', feed)
-
-class Find(View):
-    def post(self, request):
-        color = request.POST.get('color','')  # 從表單中獲取顏色選擇器的值
-        shape = request.POST.get('shape','')
-        use = request.POST.get('use','')
-        sql="select * from medicine"
-        medicines =db.querydata(sql)
-
-        results = []
-
-        for medicine in medicines:
-            color_match = color is '' or color == medicine['color']
-            shape_match = shape is '' or shape == medicine['shape']
-            use_match = use is '' or use == medicine['usee']
-
-            if color_match and shape_match and use_match:
-                results.append(medicine)
-
-            if color=='' and shape =='' and use=='':
-                return redirect(reverse('Index'))
-
-        feed= {'results': results}
-
-        if results==[]:
-
-            return redirect(reverse('nothing'))
-        
-        return render(request, 'index2.html', feed)
-        # return HttpResponse('顏色=%s 形狀=%s 劑型=%s'%(color,shape,use))
-
-class Nothing(View):
-    def get(self, request):
-        
-        return render(request, 'index3.html')
-    
-class Detail(View):
-    def get(self, request, id):
-        sql="select * from medicine"
-        medicines =db.querydata(sql)
-        medicine = next((item for item in medicines if 'id' in item and item["id"] == id), None)
-        send={'medicine': medicine}
-        return render(request, 'wait.html', send)
-        
+    # message = TextSendMessage(text="測試"+event.message.text)
+    # line_bot_api.reply_message(event.reply_token,message)

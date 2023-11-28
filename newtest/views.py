@@ -138,8 +138,8 @@ class Detail(View):
 class Login(View):
     def get(self, request):
         # 判斷是否登入，有登入就跳回首頁
-        # if request.user.is_authenticated:
-        #     return redirect(reverse('Index'))
+        if request.user.is_authenticated:
+            return redirect(reverse('Index'))
         
         return render(request, 'login.html')
 
@@ -175,7 +175,12 @@ class Register(View):
         if form.is_valid():
             username = form.cleaned_data.get('username','')
             password = form.cleaned_data.get('password','')
-            return HttpResponse('帳號為:{}, 密碼為{}'.format(username,password))
+            first_name = form.cleaned_data.get('first_name','')
+            email = form.cleaned_data.get('email','')
+
+            User.objects.create_user(username=username, password=password, first_name=first_name ,email=email)
+            msg={'ok': '註冊成功，快登入吧！'}
+            return render(request, 'login.html', msg)
 
         else:
             print(form.errors)
@@ -195,4 +200,12 @@ class Register(View):
         # User.objects.create_user(username=username, password=password)
         
         # return redirect(reverse('login'))
+
+class Logout(View):
+    def get(self, request):
+
+        logout(request)
+
+        return redirect(reverse('login'))
+
        

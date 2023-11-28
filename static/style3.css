@@ -228,6 +228,7 @@ th {
 @media (max-width: 540px) {
 
     .title {
+        margin-top: 30%;
         font-size: 30px;
     }
 

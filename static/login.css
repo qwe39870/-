@@ -24,7 +24,7 @@ h1{
     text-align: center;
     left: 35%;
 
-    height: 350px;
+    height: 400px;
     width: 30%;
     font-size: 30px;
     background-color: #e9ecef;
@@ -47,6 +47,7 @@ h1{
     border: 2px solid rgb(175, 175, 175);
     background-color: #fff0f1;
     margin-top: 5%;
+    width: 60%;
 }
 
 .shadow{
@@ -161,4 +162,91 @@ h1{
 .menu li a:hover{
     color: white;
     border-bottom: 8px solid white;
+}
+
+@media (max-width: 540px) {
+
+    .login{
+        width: 80%;
+        left: 10%;
+        height: 500px;
+    }
+
+    .login input{
+        font-size: 20px;
+    }
+
+    
+
+    .title {
+        margin-top: 30%;
+        font-size: 30px;
+    }
+
+    .frame1 {
+        margin-left: 0px;
+        width: 100%;
+
+    }
+
+    .body1 {
+        font-size: 30px;
+        width: 100%;
+        display: inline;
+        margin: 10%;
+    }
+
+
+    button {
+
+        font-size: 25px;
+    }
+
+    table {
+        font-size: 25px;
+    }
+
+    a {
+        font-size: 20px;
+        width: 40px;
+        height: 30px;
+        text-align:center;
+        border: 5px solid pink;
+
+    }
+
+    .page-link{
+        border: 0px;
+    }
+
+    th,
+    td {
+        height: 60px;
+    }
+
+    ul{
+        padding-inline-start: 0px;
+        margin-block-start: 0px;
+        margin-block-end: 0px;
+    }
+
+    .simple-pagination li {
+        font-size: 20px; 
+        width: 40px; 
+        height: 30px;  
+        padding: 10px;
+        text-align:center;
+
+    }
+
+    button{
+
+        font-size: 20px;
+        width: 80px;
+    }
+    
+    img{
+        width: 60px;
+        height: 60px;
+    }
 }

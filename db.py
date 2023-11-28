@@ -19,6 +19,8 @@ def querydata(sql):
 if __name__ == "__main__":
     sql="select * from newtest_test"
     datas=querydata(sql)
+    # for data in datas:
+    #     print(data['name'])
     import pprint
-    pprint.pprint(datas)
+    pprint.pprint(datas['name'])
 

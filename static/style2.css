@@ -264,6 +264,7 @@ button {
 @media (max-width: 540px) {
 
     .title {
+        margin-top: 30%;
         font-size: 30px;
     }
 
@@ -291,6 +292,15 @@ button {
     }
 
     a {
+        font-size: 20px;
+        width: 40px;
+        height: 30px;
+        text-align:center;
+        border: 5px solid pink;
+
+    }
+
+    .wrap2 a {
         font-size: 20px;
         width: 40px;
         height: 30px;
